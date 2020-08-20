@@ -46,6 +46,12 @@ spec:
           {{- end }}
           {{- if .Values.backendStore.postgres }}
           env:
+            - name: AWS_ACCESS_KEY_ID
+              value: {{ .Values.AWS_ACCESS_KEY_ID }}
+            - name: AWS_SECRET_ACCESS_KEY
+              value: {{ .Values.AWS_SECRET_ACCESS_KEY }}
+            - name: MLFLOW_S3_ENDPOINT_URL 
+              value: {{ .Values.MLFLOW_S3_ENDPOINT_URL }}            
             - name: SECRET_PASSWORD
               valueFrom:
                 secretKeyRef:
